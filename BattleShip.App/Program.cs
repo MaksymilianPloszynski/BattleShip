@@ -1,11 +1,12 @@
 ﻿using System;
 
-namespace BattleShip.Console
+namespace BattleShip.App
 {
     internal class Program
     {
         static void Main(string[] args)
         {
+
             Console.WriteLine("Hello World!");
         }
     }
