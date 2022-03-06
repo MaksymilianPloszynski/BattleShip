@@ -67,14 +67,21 @@ namespace BattleShip.Library.Fields
                     {
                         return true;
                     }
+                }
+                else if(!item.IsVertical && shipLocation.IsVertical)
+                {
+
+                }
+                else if(item.IsVertical && !shipLocation.IsVertical)
+                {
+
+                }
+                else if(!shipLocation.IsVertical && shipLocation.IsVertical)
+                {
 
                 }
             }
 
-            else
-            {
-                return true;
-            }
             return false;
         }
     }
