@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BattleShip.Library.Fields;
+using BattleShip.Library.Ships;
+using System;
 
 namespace BattleShip.App
 {
@@ -6,8 +8,19 @@ namespace BattleShip.App
     {
         static void Main(string[] args)
         {
+            var field = new Battlefield();
 
-            Console.WriteLine("Hello World!");
+            field.AddShip(new Destroyer());
+            field.AddShip(new Destroyer());
+            field.AddShip(new Destroyer());
+            field.AddShip(new Destroyer());
+            field.AddShip(new Battleship());
+
+            field.PrepareField();
+
+            field.PrintBattlefield();
+
+            Console.ReadKey();
         }
     }
 }
