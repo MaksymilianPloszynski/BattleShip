@@ -11,14 +11,10 @@ namespace BattleShip.Library.Ships
         public string Name { get; protected set; }
         public int Width { get; protected set; }
         public int Hits { get; private set; }
-
-
-
         public bool IsSunk()
         {
             return Hits >= Width;
         }
-
         public void Hit()
         {
             Hits++;

@@ -5,7 +5,6 @@
         int Hits { get; }
         string Name { get; }
         int Width { get; }
-
         void Hit();
         bool IsSunk();
     }

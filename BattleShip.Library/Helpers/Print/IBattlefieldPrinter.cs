@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BattleShip.Library.Helpers
+namespace BattleShip.Library.Helpers.Print
 {
     public interface IBattlefieldPrinter
     {
-        void Print(Battlefield battlefield);
+        void Print(Field[,] battlefieldArea);
     }
 }
