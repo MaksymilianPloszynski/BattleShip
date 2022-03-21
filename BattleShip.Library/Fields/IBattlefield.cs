@@ -9,9 +9,10 @@ namespace BattleShip.Library.Fields
 {
     public interface IBattlefield
     {
+        public Field[,] Area { get;}
         void AddShip(Ship ship);
         void PrepareField();
-        void GetHit(string collumnName, int rowNumber);
+        bool GetHit(string collumnName, int rowNumber);
         bool AllShipsAreSunk();
     }
 }

@@ -10,8 +10,9 @@ namespace BattleShip.Library.Helpers.Print
     public class ConsolePrinter : IBattlefieldPrinter
     {
         private const string _letters = "ABCDEFGHIJ";
-        public void Print(Field[,] battlefield)
+        public void Print(IBattlefield battlefie)
         {
+            var battlefield = battlefie.Area;
             Console.Write("  ");
             foreach (var character in _letters)
             {
@@ -36,6 +37,11 @@ namespace BattleShip.Library.Helpers.Print
                 }
                 Console.WriteLine();
             }
+        }
+
+        public void Print(IFiringBoard firingBoard)
+        {
+            throw new NotImplementedException();
         }
     }
 }

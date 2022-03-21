@@ -15,5 +15,23 @@ namespace BattleShip.Library.Helpers.PlaceShips.Models
             X = x;
             Y = y;
         }
+
+        public override bool Equals(Object obj)
+        {
+            if ((obj == null) || !this.GetType().Equals(obj.GetType()))
+            {
+                return false;
+            }
+            else
+            {
+                Point point = (Point)obj;
+                return (X == point.X) && (Y == point.Y);
+            }
+        }
+
+        public override int GetHashCode()
+        {
+            return (X << 2) ^ Y;
+        }
     }
 }

@@ -24,13 +24,14 @@ namespace BattleShip.Library.Fields
             Ship = ship;
         }
 
-        public void Hit()
+        public bool Hit()
         {
-            HasBeenHit = true;
-            if (Ship != null)
+            if (Ship != null && !HasBeenHit)
             {
                 Ship.Hit();
             }
+            HasBeenHit = true;
+            return Ship != null;
         }
 
         public override string ToString()

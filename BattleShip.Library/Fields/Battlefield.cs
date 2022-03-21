@@ -1,4 +1,5 @@
 ﻿using BattleShip.Library.Helpers.PlaceShips;
+using BattleShip.Library.Helpers.Position;
 using BattleShip.Library.Ships;
 using System;
 using System.Collections.Generic;
@@ -11,25 +12,22 @@ namespace BattleShip.Library.Fields
     public class Battlefield : IBattlefield
     {
         public Field[,] Area { get; private set; }
-        private List<Ship> _ships;
-        private string[] collumnNames = new string[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" };
         private readonly IShipPlacer _shipPlacer;
+        private readonly IPositionConverter _positionConverter;
+        private List<Ship> _ships;
 
-        public Battlefield(IShipPlacer shipPlacer)
+        public Battlefield(IShipPlacer shipPlacer, IPositionConverter positionConverter)
         {           
             _shipPlacer = shipPlacer;
+            _positionConverter = positionConverter;
             _ships = new List<Ship>();
             Area = new Field[10, 10];
         }
 
-        public void GetHit(string collumnName, int rowNumber)
+        public bool GetHit(string collumnName, int rowNumber)
         {
-            int collumnNumber = Array.FindIndex(collumnNames, n => n == collumnName);
-            if (collumnNumber == -1) throw new ArgumentException(collumnName);
-
-            var field = Area[collumnNumber,rowNumber -1];
-
-            field.Hit();
+            var target = FindTarget(collumnName, rowNumber);
+            return target.Hit();
         }
 
         public bool AllShipsAreSunk()
@@ -46,6 +44,11 @@ namespace BattleShip.Library.Fields
         public void AddShip(Ship ship)
         {
             _ships.Add(ship);
+        }
+        private Field FindTarget(string collumnName, int rowNumber)
+        {
+            var point = _positionConverter.Convert(collumnName, rowNumber);
+            return Area[point.X, point.Y];
         }
     }
 }

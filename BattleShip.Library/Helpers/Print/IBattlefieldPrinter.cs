@@ -9,6 +9,7 @@ namespace BattleShip.Library.Helpers.Print
 {
     public interface IBattlefieldPrinter
     {
-        void Print(Field[,] battlefieldArea);
+        void Print(IBattlefield battlefieldArea);
+        void Print(IFiringBoard firingBoard);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using BattleShip.Library.Fields;
 using BattleShip.Library.Helpers.PlaceShips;
+using BattleShip.Library.Helpers.Position;
 using BattleShip.Library.Helpers.Print;
 using BattleShip.Library.Ships;
 using System;
@@ -12,7 +13,8 @@ namespace BattleShip.App
         static void Main(string[] args)
         {
             IShipPlacer shipPlacer = new ShipPlacer();
-            var field = new Battlefield(shipPlacer);
+            IPositionConverter  positionConverter = new PositionConverter();
+            var field = new Battlefield(shipPlacer, positionConverter);
 
             field.AddShip(new Destroyer());
             field.AddShip(new Destroyer());
@@ -36,7 +38,7 @@ namespace BattleShip.App
             field.GetHit("H", 1);
             field.GetHit("I", 1);
 
-            printer.Print(field.Area);
+            printer.Print(field);
 
 
             Console.ReadKey();
