@@ -21,6 +21,7 @@ namespace BattleShip.App
             field.AddShip(new Destroyer());
             field.AddShip(new Destroyer());
             field.AddShip(new Battleship());
+            //sdsds
 
             field.PrepareField();
 
